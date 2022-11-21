@@ -5,19 +5,19 @@ class CCards
     public function getCards(): array
     {
         $result = [];
-        $deck = [];
+        $deck = new PlayingCardDeck();
 
         foreach(Suit::$suits as $suit) {
             for ($faceValue = 0; $faceValue < 13; $faceValue++) {
             $card = new PlayingCard();
             $card->suit = $suit;
             $card->faceValue = $faceValue;
-            $deck[] = $card;
+            $deck->playingCards[] = $card;
             }
         }
 
         $cardNumber = 0;
-        foreach ($deck as $card) {
+        foreach ($deck->playingCards as $card) {
             $faceValueName = "";
             switch ($card->faceValue) {
                 case 0:
@@ -69,7 +69,9 @@ class Suit {
 
 }
 
-
+class PlayingCardDeck {
+    public array $playingCards;
+}
 
 
 $cards = new CCards();
