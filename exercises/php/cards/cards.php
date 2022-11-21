@@ -7,12 +7,12 @@ class CCards
         $result = [];
         $deck = [];
 
-        for ($suit = 0; $suit < 4; $suit++) {
+        foreach(Suit::$suits as $suit) {
             for ($faceValue = 0; $faceValue < 13; $faceValue++) {
             $card = new PlayingCard();
             $card->suit = $suit;
             $card->faceValue = $faceValue;
-             $deck[] = $card;
+            $deck[] = $card;
             }
         }
 
@@ -47,23 +47,7 @@ class CCards
                     throw new Exception("Something went wrong " . $card->faceValue . " is not a valid faceValue!");
             }
 
-            $suitName = "";
-            switch ($card->suit) {
-                case 0:
-                    $suitName = "clubs";
-                    break;
-                case 1:
-                    $suitName = "diamonds";
-                    break;
-                case 2:
-                    $suitName = "hearts";
-                    break;
-                case 3:
-                    $suitName = "spades";
-                    break;
-                default:
-                    throw new Exception("Something went wrong " . $card->suit . " is not a valid suitName!");
-            }
+            $suitName = $card->suit;
 
             $result[$cardNumber] = $faceValueName . " of " . $suitName;
             $cardNumber++;
@@ -74,11 +58,19 @@ class CCards
 
 }
 
-    class PlayingCard {
-        public int $suit;
-        public int $faceValue;
+class PlayingCard {
+    public string $suit;
+    public int $faceValue;
+}
 
-    }
+class Suit {
+
+    public static array $suits = array('clubs', 'diamonds', 'hearts', 'spades');
+
+}
+
+
+
 
 $cards = new CCards();
 $deckInOrder = $cards->getCards();
