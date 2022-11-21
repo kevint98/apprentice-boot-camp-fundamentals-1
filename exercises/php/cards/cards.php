@@ -7,19 +7,10 @@ class CCards
         $result = [];
         $deck = new PlayingCardDeck();
 
-        foreach(Suit::$suits as $suit) {
-            for ($faceValue = 0; $faceValue < 13; $faceValue++) {
-            $card = new PlayingCard();
-            $card->suit = $suit;
-            $card->faceValue = $faceValue;
-            $deck->playingCards[] = $card;
-            }
-        }
-
         $cardNumber = 0;
         foreach ($deck->playingCards as $card) {
             $faceValueName = "";
-            switch ($card->faceValue) {
+            switch ($card->getFaceValue()) {
                 case 0:
                     $faceValueName = 'ace';
                     break;
@@ -32,7 +23,7 @@ class CCards
                 case 7:
                 case 8:
                 case 9:
-                    $faceValueName = strval($card->faceValue + 1);
+                    $faceValueName = strval($card->getFaceValue() + 1);
                     break;
                 case 10:
                     $faceValueName = "jack";
@@ -44,10 +35,10 @@ class CCards
                     $faceValueName = "king";
                     break;
                 default:
-                    throw new Exception("Something went wrong " . $card->faceValue . " is not a valid faceValue!");
+                    throw new Exception("Something went wrong " . $card->getFaceValue() . " is not a valid faceValue!");
             }
 
-            $suitName = $card->suit;
+            $suitName = $card->getSuit();
 
             $result[$cardNumber] = $faceValueName . " of " . $suitName;
             $cardNumber++;
@@ -59,8 +50,22 @@ class CCards
 }
 
 class PlayingCard {
-    public string $suit;
-    public int $faceValue;
+
+    private string $suit;
+    private int $faceValue;
+
+    public function __construct(string $suit, int $faceValue) {
+            $this->suit = $suit;
+            $this->faceValue = $faceValue;
+        }
+
+    public function getSuit(): string {
+            return $this->suit;
+        }
+
+    public function getFaceValue(): int {
+        return $this->faceValue;
+    }
 }
 
 class Suit {
@@ -70,7 +75,18 @@ class Suit {
 }
 
 class PlayingCardDeck {
-    public array $playingCards;
+    public array $playingCards = array();
+
+    public function __construct(){
+        foreach(Suit::$suits as $suit) {
+                    for ($faceValue = 0; $faceValue < 13; $faceValue++) {
+                    $card = new PlayingCard($suit, $faceValue);
+                    $this->playingCards[] = $card;
+                    }
+                }
+    }
+
+
 }
 
 
