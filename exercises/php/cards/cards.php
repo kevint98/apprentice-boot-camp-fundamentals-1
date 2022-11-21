@@ -9,14 +9,17 @@ class CCards
 
         for ($suit = 0; $suit < 4; $suit++) {
             for ($faceValue = 0; $faceValue < 13; $faceValue++) {
-                $deck[] = [$suit, $faceValue];
+            $card = new PlayingCard();
+            $card->suit = $suit;
+            $card->faceValue = $faceValue;
+             $deck[] = $card;
             }
         }
 
         $cardNumber = 0;
         foreach ($deck as $card) {
             $faceValueName = "";
-            switch ($card[1]) {
+            switch ($card->faceValue) {
                 case 0:
                     $faceValueName = 'ace';
                     break;
@@ -29,7 +32,7 @@ class CCards
                 case 7:
                 case 8:
                 case 9:
-                    $faceValueName = strval($card[1] + 1);
+                    $faceValueName = strval($card->faceValue + 1);
                     break;
                 case 10:
                     $faceValueName = "jack";
@@ -41,11 +44,11 @@ class CCards
                     $faceValueName = "king";
                     break;
                 default:
-                    throw new Exception("Something went wrong " . $card[1] . " is not a valid faceValue!");
+                    throw new Exception("Something went wrong " . $card->faceValue . " is not a valid faceValue!");
             }
 
             $suitName = "";
-            switch ($card[0]) {
+            switch ($card->suit) {
                 case 0:
                     $suitName = "clubs";
                     break;
@@ -59,7 +62,7 @@ class CCards
                     $suitName = "spades";
                     break;
                 default:
-                    throw new Exception("Something went wrong " . $card[0] . " is not a valid suitName!");
+                    throw new Exception("Something went wrong " . $card->suit . " is not a valid suitName!");
             }
 
             $result[$cardNumber] = $faceValueName . " of " . $suitName;
@@ -70,6 +73,12 @@ class CCards
     }
 
 }
+
+    class PlayingCard {
+        public int $suit;
+        public int $faceValue;
+
+    }
 
 $cards = new CCards();
 $deckInOrder = $cards->getCards();
