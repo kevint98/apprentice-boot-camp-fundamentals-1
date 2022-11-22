@@ -25,6 +25,7 @@ class CSnap
         $this->deck->shuffle();
     }
 
+
     public function play(): void
     {
         $previousCard = null;

@@ -1,6 +1,8 @@
 <?php
 
-class CCards
+namespace McrDigital\PhpFundamentals1\Cards;
+
+class Cards
 {
     public function getCards(): array
     {
@@ -90,7 +92,7 @@ class PlayingCardDeck {
 }
 
 
-$cards = new CCards();
+$cards = new cards();
 $deckInOrder = $cards->getCards();
 
 foreach ($deckInOrder as $card) {

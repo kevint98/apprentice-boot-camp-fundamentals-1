@@ -1,6 +1,6 @@
 <?php
 
-include 'cards/cards.php';
+namespace McrDigital\PhpFundamentals1\Cards;
 
 use PHPUnit\Framework\TestCase;
 
@@ -65,7 +65,7 @@ class CardsTest extends TestCase
     {
         $expectedCards = $this->testCards;
 
-        $cards = new CCards();
+        $cards = new Cards();
 
         $this->assertEquals($expectedCards, $cards->getCards());
     }

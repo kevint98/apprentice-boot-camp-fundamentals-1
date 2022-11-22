@@ -2,7 +2,7 @@
 
 namespace McrDigital\PhpFundamentals1\Cards;
 
-class AnimalCard
+class AnimalCard implements Card
 {
     private string $animal;
 
@@ -16,7 +16,7 @@ class AnimalCard
         return $this->animal;
     }
 
-    public function snap(AnimalCard|null $card): bool
+    public function snap(Card | null $card): bool
     {
         return !!$card && $this->animal === $card->animal;
     }
