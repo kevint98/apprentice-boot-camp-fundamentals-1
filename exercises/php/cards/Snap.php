@@ -72,6 +72,6 @@ class CSnap
     }
 }
 
-$snap = new CSnap(new PlayingCardDeck());
+$snap = new CSnap(new AnimalDeck());
 $snap->play();
 
