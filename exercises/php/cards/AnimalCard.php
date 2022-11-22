@@ -2,7 +2,7 @@
 
 namespace McrDigital\PhpFundamentals1\Cards;
 
-class AnimalCard implements Card
+class AnimalCard extends Card
 {
     private string $animal;
 

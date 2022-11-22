@@ -1,7 +1,7 @@
 <?php
 namespace McrDigital\PhpFundamentals1\Cards;
 
-class PlayingCard implements Card
+class PlayingCard extends Card
 {
 
     private string $suit;

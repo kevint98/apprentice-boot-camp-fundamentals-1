@@ -1,7 +1,7 @@
 <?php
 namespace McrDigital\PhpFundamentals1\Cards;
 
-class PlayingCardDeck implements Deck {
+class PlayingCardDeck extends Deck {
     public array $playingCards = array();
 
     public function __construct(){

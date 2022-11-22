@@ -1,8 +1,8 @@
 <?php
 namespace McrDigital\PhpFundamentals1\Cards;
 
-interface Card {
-    public function snap(Card $previousCard) : bool;
+abstract class Card {
+    public abstract function snap(Card $previousCard) : bool;
 
 }
 

@@ -1,9 +1,11 @@
 <?php
 namespace McrDigital\PhpFundamentals1\Cards;
 
-interface Deck{
+abstract class Deck{
 
-    public function shuffle() : void;
-    public function getCards() : array;
-    public function deal() : Card;
+    public abstract function shuffle() : void;
+
+    public abstract function getCards() : array;
+
+    public abstract function deal() : Card;
 }

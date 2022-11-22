@@ -2,7 +2,7 @@
 
 namespace McrDigital\PhpFundamentals1\Cards;
 
-class AnimalDeck implements Deck
+class AnimalDeck extends Deck
 {
     private array $cards;
 
