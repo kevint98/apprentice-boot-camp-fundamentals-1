@@ -1,9 +1,9 @@
 <?php
 
 /*
- * To execute this PHP script, use the command `php snap.php`
+ * To execute this PHP script, use the command `php Snap.php`
  * from the command line positioned at the `cards/` directory.
- * E.g. cd cards/ && php snap.php
+ * E.g. cd cards/ && php Snap.php
  */
 
 
