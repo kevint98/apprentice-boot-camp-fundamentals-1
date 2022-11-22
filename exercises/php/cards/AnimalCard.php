@@ -18,7 +18,7 @@ class AnimalCard extends Card
 
     public function snap(Card | null $card): bool
     {
-        return !!$card && $this->animal === $card->animal;
+        return $card instanceof AnimalCard && $this->animal === $card->animal;
     }
 
 }

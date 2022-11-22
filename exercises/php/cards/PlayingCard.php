@@ -47,16 +47,8 @@ class PlayingCard extends Card
 
     }
 
-    public function getSuit(): string {
-        return $this->suit;
-    }
-
-    public function getFaceValue(): int {
-        return $this->faceValue;
-    }
-
     public function snap(Card $previousCard): bool
     {
-        return $this->faceValue == $previousCard->faceValue;
+        return $previousCard instanceof PlayingCard && $this->faceValue == $previousCard->faceValue;
     }
 }

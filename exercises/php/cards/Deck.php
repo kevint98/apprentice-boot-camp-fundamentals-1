@@ -1,7 +1,7 @@
 <?php
 namespace McrDigital\PhpFundamentals1\Cards;
 
-abstract class Deck{
+class Deck{
     protected array $cards = array();
 
     public function shuffle() : void {
