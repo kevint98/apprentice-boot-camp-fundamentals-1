@@ -2,7 +2,7 @@
 
 namespace McrDigital\PhpFundamentals1\Cards;
 
-class AnimalDeck
+class AnimalDeck implements Deck
 {
     private array $cards;
 
@@ -40,7 +40,7 @@ class AnimalDeck
         }
     }
 
-    public function deal(): AnimalCard
+    public function deal(): Card
     {
         $card = array_splice($this->cards, 0, 1)[0];
         return $card;

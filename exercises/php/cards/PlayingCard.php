@@ -1,7 +1,8 @@
 <?php
 namespace McrDigital\PhpFundamentals1\Cards;
 
-class PlayingCard {
+class PlayingCard implements Card
+{
 
     private string $suit;
     private int $faceValue;
@@ -52,5 +53,10 @@ class PlayingCard {
 
     public function getFaceValue(): int {
         return $this->faceValue;
+    }
+
+    public function snap(Card $previousCard): bool
+    {
+        return $this->faceValue == $previousCard->faceValue;
     }
 }
